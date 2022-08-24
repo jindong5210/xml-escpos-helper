@@ -1,5 +1,5 @@
 {
-  "name": "@tillpos/xml-escpos-helper",
+  "name": "@jindong5210/xml-escpos-helper",
   "description": "ESC/POS with XML interface",
   "keywords": [
     "escpos",
@@ -28,16 +28,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/hitz-group/xml-escpos-helper.git"
+    "url": "http://github.com/jindong5210/xml-escpos-helper.git"
   },
   "contributors": [
-    "Snehit Velma <snehithvelma@gmail.com>"
+    "Jin Dong <jindong05@126.com>"
   ],
   "bugs": {
-    "url": "https://github.com/hitz-group/xml-escpos-helper/issues"
+    "url": "https://github.com/jindong5210/xml-escpos-helper/issues"
   },
   "dependencies": {
     "buffer": "^6.0.3",
+    "iconv-lite": "^0.6.3",
     "mustache": "^4.1.0",
     "mutable-buffer": "2.0.3",
     "ndarray": "^1.0.19",

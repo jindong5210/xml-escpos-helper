@@ -5,13 +5,13 @@ import { NodeFactory } from './node-factory';
 
 export class XMLParser {
 
-  public parser(xml: string): BufferBuilder {
+  public parser(xml: string, encoding?: string): BufferBuilder {
     let parsedXML = parser(xml);
-    return this.compile(parsedXML);
+    return this.compile(parsedXML, encoding);
   }
 
-  private compile(parsedXML: any): BufferBuilder {
-    let bufferBuilder = new BufferBuilder();
+  private compile(parsedXML: any, encoding?: string): BufferBuilder {
+    let bufferBuilder = new BufferBuilder(null, { encoding });
     let rootNode = this.adapter(parsedXML.root, null);
     return rootNode.draw(bufferBuilder);
   }

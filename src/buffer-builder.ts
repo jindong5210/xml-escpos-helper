@@ -1,11 +1,15 @@
 import { Command } from "./command";
 import { MutableBuffer } from "mutable-buffer";
 import Image from "./image";
+import iconv from "iconv-lite"
+
 export class BufferBuilder {
   private buffer: MutableBuffer;
+  private encoding: string;
 
-  constructor(private defaultSettings: boolean = true) {
+  constructor(private defaultSettings: boolean = true, options : any = {}) {
     this.buffer = new MutableBuffer();
+    this.encoding = options.encoding || 'GB18030'
 
     if (this.defaultSettings) {
       this.resetCharacterSize();
@@ -112,7 +116,7 @@ export class BufferBuilder {
     this.buffer.write(Command.GS_f(labelFont)); // HRI font
     this.buffer.write(Command.GS_H(labelPosition)); // HRI font
     this.buffer.write(Command.GS_K(barcodeSystem, data.length)); // data is a string in UTF-8
-    this.buffer.write(data, "ascii");
+    this.buffer.write(iconv.encode(data, this.encoding));
     return this;
   }
 
@@ -126,7 +130,7 @@ export class BufferBuilder {
       Command.ESC_Z(version, errorCorrectionLevel, componentTypes)
     );
     this.buffer.writeUInt16LE(data.length); // data is a string in UTF-8
-    this.buffer.write(data, "ascii");
+    this.buffer.write(iconv.encode(data, this.encoding));
     return this;
   }
 
@@ -141,7 +145,7 @@ export class BufferBuilder {
   }
 
   public printText(text: string): BufferBuilder {
-    this.buffer.write(text, "ascii");
+    this.buffer.write(iconv.encode(text, this.encoding));
     return this;
   }
 

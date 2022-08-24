@@ -9,13 +9,13 @@ export class EscPos {
     return templateParser.parser(template, data).build();
   }
 
-  public static getBufferFromXML(xml: string): number[] {
+  public static getBufferFromXML(xml: string, encoding?: string): number[] {
     let xmlParser = new XMLParser();
-    return xmlParser.parser(xml).build();
+    return xmlParser.parser(xml, encoding).build();
   }
 
-  public static getBufferBuilder(): BufferBuilder {
-    return new BufferBuilder();
+  public static getBufferBuilder(encoding?: string): BufferBuilder {
+    return new BufferBuilder(null, { encoding });
   }
 
 }
