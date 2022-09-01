@@ -1,5 +1,5 @@
 {
-  "name": "@jindong5210/xml-escpos-helper",
+  "name": "@hpos/xml-escpos-helper",
   "description": "ESC/POS with XML interface",
   "keywords": [
     "escpos",
